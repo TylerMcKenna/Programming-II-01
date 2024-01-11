@@ -1,2 +1,2 @@
-# Programming-II-01
-Programming II repository for group project 1
+# Programming-II-Blue
+Blue group's programming II repository for group project 1

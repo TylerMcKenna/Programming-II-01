@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.imagetransform/com.example.imagetransform.HelloApplication
+                            <mainClass>com.example.imagetransform/com.example.imagetransform.ImageApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

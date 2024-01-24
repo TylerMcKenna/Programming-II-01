@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c443d4b2-f955-475c-a0c9-737cfbbdbce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/ImageApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/ImageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/imagetransform/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/imagetransform/image-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/imagetransform/image-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/imagetransform/image-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +32,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/tyler/Desktop/Programming-II-01/ImageTransform&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tyler/Desktop/School/Semester 2/Programming II/ImageFX&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -57,6 +56,9 @@
       <workItem from="1705869191838" duration="2357000" />
       <workItem from="1705871680539" duration="1043000" />
       <workItem from="1705875626774" duration="688000" />
+      <workItem from="1706118331705" duration="1520000" />
+      <workItem from="1706128085480" duration="748000" />
+      <workItem from="1706130983007" duration="1672000" />
     </task>
     <servers />
   </component>

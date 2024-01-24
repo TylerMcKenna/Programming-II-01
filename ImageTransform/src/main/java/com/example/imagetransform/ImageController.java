@@ -20,7 +20,10 @@ import java.io.IOException;
 
 public class ImageController {
     @FXML
-    private ImageView imageView;
+    private ImageView imageViewNew;
+
+    @FXML
+    private ImageView imageViewOriginal;
 
     @FXML
     private Button fileButton;
@@ -30,20 +33,23 @@ public class ImageController {
 
     }
 
-    // Tyler McKenna's code, please do not touch!
+    // Tyler McKenna's code, please do not touch! (excluding the line I specified)
     @FXML
     private void fileButtonPressed(ActionEvent event) throws IOException {
         FileChooser chooser = new FileChooser();
         File file = chooser.showOpenDialog(null);
 
-        //Image image = new Image(file.toURI().toString());
+        Image image = new Image(file.toURI().toString());
         BufferedImage img = ImageIO.read(file);
+        imageViewOriginal.setImage(image);
         // To test your own method edit this line
         BufferedImage newImage = changeAlpha(img, 0.5);
-        Image image = convertToFxImage(newImage);
-        imageView.setImage(image);
+
+        image = convertToFxImage(newImage);
+        imageViewNew.setImage(image);
     }
 
+    // will be gausian blur
     // Tyler McKenna's code, please do not touch!
     private BufferedImage changeAlpha(BufferedImage img, double transparency) {
         for (int y = 0; y < img.getHeight(); y++) {
@@ -77,7 +83,6 @@ public class ImageController {
                 }
             }
         }
-
         return new ImageView(wr).getImage();
     }
 }

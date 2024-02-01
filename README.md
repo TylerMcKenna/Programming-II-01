@@ -6,7 +6,7 @@ Pull before making any changes
 Leave a message when you commit saying what you changed
 
 Vojin: 
-Henri-Junior: 
+Henri-Junior: Blue
 Holt: 
 Tyler: Gray scale & sepia
 </pre>

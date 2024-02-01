@@ -3,13 +3,11 @@ package com.example.imagetransform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -36,42 +34,65 @@ public class ImageController {
     // Tyler McKenna's code, please do not touch! (excluding the line I specified)
     @FXML
     private void fileButtonPressed(ActionEvent event) throws IOException {
+        // Reads in file
         FileChooser chooser = new FileChooser();
         File file = chooser.showOpenDialog(null);
 
+        // Gets image from file, displays it on the original view
         Image image = new Image(file.toURI().toString());
-        BufferedImage img = ImageIO.read(file);
         imageViewOriginal.setImage(image);
+
+        BufferedImage img = ImageIO.read(file);
         // To test your own method edit this line
-        BufferedImage newImage = changeAlpha(img, 0.5);
+        BufferedImage newImage = greyscaleFilter(img);
 
-        image = convertToFxImage(newImage);
-        imageViewNew.setImage(image);
+        // Converts BufferedImage "newImage" back to image and displays the changes
+        imageViewNew.setImage(convertToFxImage(newImage));
     }
-
-    // will be gausian blur
     // Tyler McKenna's code, please do not touch!
-    private BufferedImage changeAlpha(BufferedImage img, double transparency) {
+    // Math found here https://stackoverflow.com/questions/1061093/how-is-a-sepia-tone-created
+    private BufferedImage sepiaFilter(BufferedImage img) {
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {
                 int pixel = img.getRGB(x,y);
                 Color color = new Color(pixel);
 
                 int alpha = color.getAlpha();
-                int red = color.getRed();
-                int green = color.getGreen();
-                int blue = color.getBlue();
+                int red = (int)((color.getRed() * 0.393) + (color.getGreen() * 0.769) + (color.getBlue() * 0.189));
+                int green = (int)((color.getRed() * 0.349) + (color.getGreen() * 0.686) + (color.getBlue() * 0.168));
+                int blue = (int)((color.getRed() * 0.272) + (color.getGreen() * 0.534) + (color.getBlue() * 0.131));
 
-                alpha = (int)(alpha * transparency);
+                if(red > 255) red = 255;
+                if(green > 255) green = 255;
+                if(blue > 255) blue = 255;
 
-                Color newPixel = new Color(alpha, red, green, blue);
+                Color newPixel = new Color(red, green, blue, alpha);
+                img.setRGB(x, y, newPixel.getRGB());
+            }
+        }
+        return img;
+    }
+    // Tyler McKenna's code, please do not touch!
+    // Math found here https://support.ptc.com/help/mathcad/r9.0/en/index.html#page/PTC_Mathcad_Help/example_grayscale_and_color_in_images.html
+    private BufferedImage greyscaleFilter(BufferedImage img) {
+        for (int y = 0; y < img.getHeight(); y++) {
+            for (int x = 0; x < img.getWidth(); x++) {
+                int pixel = img.getRGB(x,y);
+                Color color = new Color(pixel);
+
+                int alpha = color.getAlpha();
+                int red = (int)(color.getRed() * 0.299 + color.getGreen() * 0.587 + color.getBlue() * 0.114);
+                int green = (int)(color.getRed() * 0.299 + color.getGreen() * 0.587 + color.getBlue() * 0.114);
+                int blue = (int)(color.getRed() * 0.299 + color.getGreen() * 0.587 + color.getBlue() * 0.114);
+
+                Color newPixel = new Color(red, green, blue, alpha);
                 img.setRGB(x, y, newPixel.getRGB());
             }
         }
         return img;
     }
 
-    // Tyler McKenna's code, please do not touch!
+    // Copied method from stackoverflow
     private static Image convertToFxImage(BufferedImage image) {
         WritableImage wr = null;
         if (image != null) {

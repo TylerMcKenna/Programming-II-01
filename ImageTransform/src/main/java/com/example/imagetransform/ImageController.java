@@ -75,20 +75,25 @@ public class ImageController {
     // Tyler McKenna's code, please do not touch!
     // Math found here https://support.ptc.com/help/mathcad/r9.0/en/index.html#page/PTC_Mathcad_Help/example_grayscale_and_color_in_images.html
     private BufferedImage greyscaleFilter(BufferedImage img) {
+        // Loops through all the pixels
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {
+                // gets the rgba of pixel at x,y and puts it into a color
                 int pixel = img.getRGB(x,y);
                 Color color = new Color(pixel);
 
+                // edits the pixel
                 int alpha = color.getAlpha();
                 int red = (int)(color.getRed() * 0.299 + color.getGreen() * 0.587 + color.getBlue() * 0.114);
                 int green = (int)(color.getRed() * 0.299 + color.getGreen() * 0.587 + color.getBlue() * 0.114);
                 int blue = (int)(color.getRed() * 0.299 + color.getGreen() * 0.587 + color.getBlue() * 0.114);
 
+                // changes the pixel in the image
                 Color newPixel = new Color(red, green, blue, alpha);
                 img.setRGB(x, y, newPixel.getRGB());
             }
         }
+        // return the edited images
         return img;
     }
 

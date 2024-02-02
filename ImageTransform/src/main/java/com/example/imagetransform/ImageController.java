@@ -3,6 +3,7 @@ package com.example.imagetransform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
@@ -24,11 +25,23 @@ public class ImageController {
     private ImageView imageViewOriginal;
 
     @FXML
+    private ChoiceBox<String> choiceBox;
+
+    @FXML
     private Button fileButton;
+
+    private String[] filterList = {"Greyscale", "Sepia", "Rotate"};
 
     @FXML
     public void initialize() {
+        choiceBox.getItems().setAll(filterList);
+        choiceBox.setValue(filterList[0]);
+        choiceBox.setOnAction(this::setFunction);
+        //choiceBox.setOnAction(this::fileButtonPressed);
+    }
 
+    private void setFunction(ActionEvent event) {
+        //ah
     }
 
     // Tyler McKenna's code, please do not touch! (excluding the line I specified)
@@ -96,6 +109,7 @@ public class ImageController {
         // return the edited images
         return img;
     }
+
 
     // Copied method from stackoverflow
     private static Image convertToFxImage(BufferedImage image) {

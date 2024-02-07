@@ -94,4 +94,157 @@ public class TransformImage {
         }
         return mirroredImage;
     }
+
+    public static BufferedImage brightnessFilter(BufferedImage img) {
+
+        // make a new BufferedImage to edit
+        BufferedImage brightImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+        // initialize variables for all the RGBA
+        double r = 0;
+        double g = 0;
+        double b = 0;
+        int a = 0;
+
+        // loop through all the pixels
+        for (int y = 0; y <img.getHeight(); y++) {
+            for (int x = 0; x < img.getWidth(); x++) {
+
+                // get the RGBA of the current pixel in a color to use the get color functions
+                int pixel = img.getRGB(x,y);
+                Color oldColor = new Color(pixel);
+
+                // multiply all the values to get them closer to white
+                r = (oldColor.getRed() * 1.5);
+                // limits the value to not go past the maximum 255
+                if (r > 255) {
+                    r = 255;
+                }
+                g = oldColor.getGreen() * 1.5;
+                if (g > 255) {
+                    g = 255;
+                }
+                b = oldColor.getBlue() * 1.5;
+                if (b > 255) {
+                    b = 255;
+                }
+                a = oldColor.getAlpha();
+
+                // make a new color to put the new values into the pixel
+                Color newColor = new Color((int) r, (int) g, (int) b, a);
+                brightImage.setRGB(x, y, newColor.getRGB());
+            }
+        }
+        // return the new image
+        return brightImage;
+    }
+
+    public static BufferedImage flipHFilter(BufferedImage img) {
+        // make a new BufferedImage to edit
+        BufferedImage flippedHImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+        int rL = 0;
+        int gL = 0;
+        int bL = 0;
+        int aL = 0;
+
+        int rR = 0;
+        int gR = 0;
+        int bR = 0;
+        int aR = 0;
+
+        int oppositeSidex = 0;
+
+        // loop through all the pixels, but only half the x pixels
+        for (int y = 0; y < img.getHeight(); y++) {
+            for (int x = 0; x < img.getWidth() / 2; x++) {
+
+                // get the RGBA of the current pixel
+                // and the pixel on the opposite side
+                // in a color to use the get color functions
+                int pixelLeft = img.getRGB(x,y);
+                Color oldColorLeft = new Color(pixelLeft);
+
+                // make a value for the opposite side pixel
+                oppositeSidex = img.getWidth() - 1 - x;
+
+                int pixelRight = img.getRGB(oppositeSidex, y);
+                Color oldColorRight = new Color(pixelRight);
+
+                rL = oldColorLeft.getRed();
+                bL = oldColorLeft.getBlue();
+                gL = oldColorLeft.getGreen();
+                aL = oldColorLeft.getAlpha();
+
+                rR = oldColorRight.getRed();
+                bR = oldColorRight.getBlue();
+                gR = oldColorRight.getGreen();
+                aR = oldColorRight.getAlpha();
+
+                // make a new color to put the new values into the pixel
+                Color newColorLeft = new Color(rR, gR, bR, aR);
+                flippedHImage.setRGB(x, y, newColorLeft.getRGB());
+
+                Color newColorRight = new Color(rL, gL, bL, aL);
+                flippedHImage.setRGB(oppositeSidex, y, newColorRight.getRGB());
+            }
+        }
+        // return the new image
+        return flippedHImage;
+    }
+
+    public static BufferedImage flipVFilter(BufferedImage img) {
+        // make a new BufferedImage to edit
+        BufferedImage flippedVImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+        int rT = 0;
+        int gT = 0;
+        int bT = 0;
+        int aT = 0;
+
+        int rB = 0;
+        int gB = 0;
+        int bB = 0;
+        int aB = 0;
+
+        int oppositeSidey = 0;
+
+        // loop through all the pixels, but only half the y pixels
+        for (int y = 0; y < img.getHeight() / 2; y++) {
+            for (int x = 0; x < img.getWidth(); x++) {
+
+                // get the RGBA of the current pixel
+                // and the pixel on the opposite side
+                // in a color to use the get color functions
+                int pixelTop = img.getRGB(x,y);
+                Color oldColorLeft = new Color(pixelTop);
+
+                // make a value for the opposite side pixel
+                oppositeSidey = img.getHeight() - 1 - y;
+
+                int pixelBottom = img.getRGB(x, oppositeSidey);
+                Color oldColorRight = new Color(pixelBottom);
+
+                rT = oldColorLeft.getRed();
+                bT = oldColorLeft.getBlue();
+                gT = oldColorLeft.getGreen();
+                aT = oldColorLeft.getAlpha();
+
+                rB = oldColorRight.getRed();
+                bB = oldColorRight.getBlue();
+                gB = oldColorRight.getGreen();
+                aB = oldColorRight.getAlpha();
+
+                // make a new color to put the new values into the pixel
+                Color newColorTop = new Color(rB, gB, bB, aB);
+                flippedVImage.setRGB(x, y, newColorTop.getRGB());
+
+                Color newColorBottom = new Color(rT, gT, bT, aT);
+                flippedVImage.setRGB(x, oppositeSidey, newColorBottom.getRGB());
+            }
+        }
+        // return the new image
+        return flippedVImage;
+    }
+
 }

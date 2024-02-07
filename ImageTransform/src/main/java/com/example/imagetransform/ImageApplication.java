@@ -11,7 +11,7 @@ public class ImageApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ImageApplication.class.getResource("image-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 873, 590);
         stage.setTitle("Image Transformer VHTH");
         stage.setScene(scene);
         stage.show();

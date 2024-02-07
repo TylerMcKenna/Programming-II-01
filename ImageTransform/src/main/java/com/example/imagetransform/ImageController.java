@@ -3,7 +3,6 @@ package com.example.imagetransform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
@@ -11,16 +10,15 @@ import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import java.io.Console;
 import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
 
 public class ImageController {
     @FXML
-    private Button btnFile, btnGreyscale, btnInvert, btnMirror, btnSepia, btnButton5;
+    private Button btnFile, btnGreyscale, btnInvert, btnMirror, btnSepia, btnBrighten, btnFlipH, btnFlipV;
 
     @FXML
     private ImageView imageViewOriginal, imageViewNew;
@@ -31,22 +29,51 @@ public class ImageController {
     @FXML
     void greyscalePressed(ActionEvent event) throws IOException {
         setImage(TransformImage.greyscaleFilter(ImageIO.read(file)));
-        // change this
+        // this is meh
         btnGreyscale.setDisable(true);
         btnInvert.setDisable(false);
         btnMirror.setDisable(false);
         btnSepia.setDisable(false);
-        btnButton5.setDisable(false);
+        btnBrighten.setDisable(false);
+        btnFlipH.setDisable(false);
+        btnFlipV.setDisable(false);
     }
 
-
     @FXML
-    void button5Pressed(ActionEvent event) {
+    void flipHPressed(ActionEvent event) throws IOException {
+        setImage(TransformImage.flipHFilter(ImageIO.read(file)));
         btnGreyscale.setDisable(false);
         btnInvert.setDisable(false);
         btnMirror.setDisable(false);
         btnSepia.setDisable(false);
-        btnButton5.setDisable(true);    }
+        btnBrighten.setDisable(false);
+        btnFlipH.setDisable(true);
+        btnFlipV.setDisable(false);
+    }
+
+    @FXML
+    void flipVPressed(ActionEvent event) throws IOException {
+        setImage(TransformImage.flipVFilter(ImageIO.read(file)));
+        btnGreyscale.setDisable(false);
+        btnInvert.setDisable(false);
+        btnMirror.setDisable(false);
+        btnSepia.setDisable(false);
+        btnBrighten.setDisable(false);
+        btnFlipH.setDisable(false);
+        btnFlipV.setDisable(true);
+    }
+
+    @FXML
+    void brightenPressed(ActionEvent event) throws IOException {
+        setImage(TransformImage.brightnessFilter(ImageIO.read(file)));
+        btnGreyscale.setDisable(false);
+        btnInvert.setDisable(false);
+        btnMirror.setDisable(false);
+        btnSepia.setDisable(false);
+        btnBrighten.setDisable(true);
+        btnFlipH.setDisable(false);
+        btnFlipV.setDisable(false);
+    }
 
     @FXML
     void invertPressed(ActionEvent event) throws IOException {
@@ -55,7 +82,9 @@ public class ImageController {
         btnInvert.setDisable(true);
         btnMirror.setDisable(false);
         btnSepia.setDisable(false);
-        btnButton5.setDisable(false);
+        btnBrighten.setDisable(false);
+        btnFlipH.setDisable(false);
+        btnFlipV.setDisable(false);
     }
 
     @FXML
@@ -65,7 +94,9 @@ public class ImageController {
         btnInvert.setDisable(false);
         btnMirror.setDisable(true);
         btnSepia.setDisable(false);
-        btnButton5.setDisable(false);
+        btnBrighten.setDisable(false);
+        btnFlipH.setDisable(false);
+        btnFlipV.setDisable(false);
     }
 
     @FXML
@@ -75,39 +106,42 @@ public class ImageController {
         btnInvert.setDisable(false);
         btnMirror.setDisable(false);
         btnSepia.setDisable(true);
-        btnButton5.setDisable(false);
+        btnBrighten.setDisable(false);
+        btnFlipH.setDisable(false);
+        btnFlipV.setDisable(false);
     }
 
     // Tyler McKenna's code, please do not touch! (excluding the line I specified)
     @FXML
-    private void fileButtonPressed(ActionEvent event) throws IOException {
+    private void fileButtonPressed(ActionEvent event){
         // Reads in file
-        FileChooser chooser = new FileChooser();
-        file = chooser.showOpenDialog(null);
+        try {
+            FileChooser chooser = new FileChooser();
+            file = chooser.showOpenDialog(null);
 
-        // Gets image from file, displays it on the original view
-        Image image = new Image(file.toURI().toString());
-        imageViewOriginal.setImage(image);
+            // Gets image from file, displays it on the original view
+            Image image = new Image(file.toURI().toString());
+            imageViewOriginal.setImage(image);
 
-        // Sets img for image filters to reference
-        img = ImageIO.read(file);
+            // Sets img for image filters to reference
+            img = ImageIO.read(file);
 
-        // Enables the filters and stops user from changing image
-        btnGreyscale.setDisable(false);
-        btnInvert.setDisable(false);
-        btnMirror.setDisable(false);
-        btnSepia.setDisable(false);
-        btnButton5.setDisable(false);
-        btnFile.setDisable(true);
+            // Enables the filters and stops user from changing image
+            btnGreyscale.setDisable(false);
+            btnInvert.setDisable(false);
+            btnMirror.setDisable(false);
+            btnSepia.setDisable(false);
+            btnBrighten.setDisable(false);
+            btnFlipH.setDisable(false);
+            btnFlipV.setDisable(false);
+            btnFile.setDisable(true);
+        } catch (Exception exception) {
+            System.out.println("There was an issue selecting the image.");
+        }
     }
 
     private void setImage(BufferedImage img) {
         imageViewNew.setImage(convertToFxImage(img));
-    }
-
-    @FXML
-    public void initialize() {
-
     }
 
     // Copied method from stackoverflow

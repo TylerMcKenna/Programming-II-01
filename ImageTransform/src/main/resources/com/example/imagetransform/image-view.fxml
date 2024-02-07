@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="873.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.imagetransform.ImageController">
    <children>
@@ -12,9 +12,16 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="fileButton" layoutX="103.0" layoutY="53.0" mnemonicParsing="false" onAction="#fileButtonPressed" text="FileButton" />
-                  <ChoiceBox fx:id="choiceBox" layoutX="62.0" layoutY="158.0" prefWidth="150.0" />
-                  <Button layoutX="99.0" layoutY="195.0" mnemonicParsing="false" text="Apply Filter" />
+                  <Pane layoutX="8.0" layoutY="-1.0" prefHeight="589.0" prefWidth="258.0">
+                     <children>
+                        <Button fx:id="btnMirror" disable="true" layoutX="39.0" layoutY="82.0" mnemonicParsing="false" onAction="#mirrorPressed" prefHeight="25.0" prefWidth="76.0" text="Mirror" />
+                        <Button fx:id="btnInvert" disable="true" layoutX="129.0" layoutY="82.0" mnemonicParsing="false" onAction="#invertPressed" prefHeight="25.0" prefWidth="76.0" text="Invert" />
+                        <Button fx:id="btnButton5" disable="true" layoutX="39.0" layoutY="121.0" mnemonicParsing="false" onAction="#button5Pressed" prefHeight="25.0" prefWidth="76.0" text="Button5" />
+                        <Button fx:id="btnGreyscale" disable="true" layoutX="129.0" layoutY="44.0" mnemonicParsing="false" onAction="#greyscalePressed" prefHeight="25.0" prefWidth="76.0" text="Greyscale" />
+                        <Button fx:id="btnSepia" disable="true" layoutX="39.0" layoutY="44.0" mnemonicParsing="false" onAction="#sepiaPressed" prefHeight="25.0" prefWidth="76.0" text="Sepia" />
+                        <Button fx:id="btnFile" layoutX="83.0" layoutY="220.0" mnemonicParsing="false" onAction="#fileButtonPressed" text="Choose Image" />
+                     </children>
+                  </Pane>
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>

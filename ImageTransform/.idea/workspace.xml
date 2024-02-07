@@ -6,12 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="c443d4b2-f955-475c-a0c9-737cfbbdbce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/ImageApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/ImageApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/imagetransform/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/imagetransform/image-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/imagetransform/image-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -34,12 +43,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/tyler/Desktop/jar_files/javafx-swing-21.0.2.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tyler/Desktop/Programming/Libraries/openjfx-21.0.1_windows-x64_bin-sdk/javafx-sdk-21.0.1/lib/javafx.web.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -74,6 +83,12 @@
       <workItem from="1706817652779" duration="7000" />
       <workItem from="1706818468150" duration="555000" />
       <workItem from="1706833159229" duration="2364000" />
+      <workItem from="1706912796193" duration="783000" />
+      <workItem from="1707009132801" duration="64000" />
+      <workItem from="1707170734814" duration="1257000" />
+      <workItem from="1707263709578" duration="1111000" />
+      <workItem from="1707273260043" duration="469000" />
+      <workItem from="1707275360606" duration="2737000" />
     </task>
     <servers />
   </component>
@@ -90,17 +105,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="NONE" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/imagetransform/ImageController.java</url>
-          <line>64</line>
-          <log-expression expression="   // Tyler McKenna's code, please do not touch!&#10;    // Math found here " language="JAVA" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

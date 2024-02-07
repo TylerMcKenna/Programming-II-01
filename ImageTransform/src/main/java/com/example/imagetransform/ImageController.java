@@ -16,32 +16,66 @@ import java.awt.image.BufferedImage;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
 
 public class ImageController {
     @FXML
-    private ImageView imageViewNew;
+    private Button btnFile, btnGreyscale, btnInvert, btnMirror, btnSepia, btnButton5;
 
     @FXML
-    private ImageView imageViewOriginal;
+    private ImageView imageViewOriginal, imageViewNew;
+
+    private BufferedImage img;
+    private File file;
 
     @FXML
-    private ChoiceBox<String> choiceBox;
-
-    @FXML
-    private Button fileButton;
-
-    private String[] filterList = {"Greyscale", "Sepia", "Rotate"};
-
-    @FXML
-    public void initialize() {
-        choiceBox.getItems().setAll(filterList);
-        choiceBox.setValue(filterList[0]);
-        choiceBox.setOnAction(this::setFunction);
-        //choiceBox.setOnAction(this::fileButtonPressed);
+    void greyscalePressed(ActionEvent event) throws IOException {
+        setImage(TransformImage.greyscaleFilter(ImageIO.read(file)));
+        // change this
+        btnGreyscale.setDisable(true);
+        btnInvert.setDisable(false);
+        btnMirror.setDisable(false);
+        btnSepia.setDisable(false);
+        btnButton5.setDisable(false);
     }
 
-    private void setFunction(ActionEvent event) {
-        //ah
+
+    @FXML
+    void button5Pressed(ActionEvent event) {
+        btnGreyscale.setDisable(false);
+        btnInvert.setDisable(false);
+        btnMirror.setDisable(false);
+        btnSepia.setDisable(false);
+        btnButton5.setDisable(true);    }
+
+    @FXML
+    void invertPressed(ActionEvent event) throws IOException {
+        setImage(TransformImage.invert(ImageIO.read(file)));
+        btnGreyscale.setDisable(false);
+        btnInvert.setDisable(true);
+        btnMirror.setDisable(false);
+        btnSepia.setDisable(false);
+        btnButton5.setDisable(false);
+    }
+
+    @FXML
+    void mirrorPressed(ActionEvent event) throws IOException {
+        setImage(TransformImage.mirrorImageTu(ImageIO.read(file)));
+        btnGreyscale.setDisable(false);
+        btnInvert.setDisable(false);
+        btnMirror.setDisable(true);
+        btnSepia.setDisable(false);
+        btnButton5.setDisable(false);
+    }
+
+    @FXML
+    void sepiaPressed(ActionEvent event) throws IOException {
+        setImage(TransformImage.sepiaFilter(ImageIO.read(file)));
+        btnGreyscale.setDisable(false);
+        btnInvert.setDisable(false);
+        btnMirror.setDisable(false);
+        btnSepia.setDisable(true);
+        btnButton5.setDisable(false);
     }
 
     // Tyler McKenna's code, please do not touch! (excluding the line I specified)
@@ -49,67 +83,32 @@ public class ImageController {
     private void fileButtonPressed(ActionEvent event) throws IOException {
         // Reads in file
         FileChooser chooser = new FileChooser();
-        File file = chooser.showOpenDialog(null);
+        file = chooser.showOpenDialog(null);
 
         // Gets image from file, displays it on the original view
         Image image = new Image(file.toURI().toString());
         imageViewOriginal.setImage(image);
 
-        BufferedImage img = ImageIO.read(file);
-        // To test your own method edit this line
-        BufferedImage newImage = greyscaleFilter(img);
+        // Sets img for image filters to reference
+        img = ImageIO.read(file);
 
-        // Converts BufferedImage "newImage" back to image and displays the changes
-        imageViewNew.setImage(convertToFxImage(newImage));
-    }
-    // Tyler McKenna's code, please do not touch!
-    // Math found here https://stackoverflow.com/questions/1061093/how-is-a-sepia-tone-created
-    private BufferedImage sepiaFilter(BufferedImage img) {
-        for (int y = 0; y < img.getHeight(); y++) {
-            for (int x = 0; x < img.getWidth(); x++) {
-                int pixel = img.getRGB(x,y);
-                Color color = new Color(pixel);
-
-                int alpha = color.getAlpha();
-                int red = (int)((color.getRed() * 0.393) + (color.getGreen() * 0.769) + (color.getBlue() * 0.189));
-                int green = (int)((color.getRed() * 0.349) + (color.getGreen() * 0.686) + (color.getBlue() * 0.168));
-                int blue = (int)((color.getRed() * 0.272) + (color.getGreen() * 0.534) + (color.getBlue() * 0.131));
-
-                if(red > 255) red = 255;
-                if(green > 255) green = 255;
-                if(blue > 255) blue = 255;
-
-                Color newPixel = new Color(red, green, blue, alpha);
-                img.setRGB(x, y, newPixel.getRGB());
-            }
-        }
-        return img;
-    }
-    // Tyler McKenna's code, please do not touch!
-    // Math found here https://support.ptc.com/help/mathcad/r9.0/en/index.html#page/PTC_Mathcad_Help/example_grayscale_and_color_in_images.html
-    private BufferedImage greyscaleFilter(BufferedImage img) {
-        // Loops through all the pixels
-        for (int y = 0; y < img.getHeight(); y++) {
-            for (int x = 0; x < img.getWidth(); x++) {
-                // gets the rgba of pixel at x,y and puts it into a color
-                int pixel = img.getRGB(x,y);
-                Color color = new Color(pixel);
-
-                // edits the pixel
-                int alpha = color.getAlpha();
-                int red = (int)(color.getRed() * 0.299 + color.getGreen() * 0.587 + color.getBlue() * 0.114);
-                int green = (int)(color.getRed() * 0.299 + color.getGreen() * 0.587 + color.getBlue() * 0.114);
-                int blue = (int)(color.getRed() * 0.299 + color.getGreen() * 0.587 + color.getBlue() * 0.114);
-
-                // changes the pixel in the image
-                Color newPixel = new Color(red, green, blue, alpha);
-                img.setRGB(x, y, newPixel.getRGB());
-            }
-        }
-        // return the edited images
-        return img;
+        // Enables the filters and stops user from changing image
+        btnGreyscale.setDisable(false);
+        btnInvert.setDisable(false);
+        btnMirror.setDisable(false);
+        btnSepia.setDisable(false);
+        btnButton5.setDisable(false);
+        btnFile.setDisable(true);
     }
 
+    private void setImage(BufferedImage img) {
+        imageViewNew.setImage(convertToFxImage(img));
+    }
+
+    @FXML
+    public void initialize() {
+
+    }
 
     // Copied method from stackoverflow
     private static Image convertToFxImage(BufferedImage image) {

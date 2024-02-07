@@ -12,7 +12,7 @@ public class ImageApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ImageApplication.class.getResource("image-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
-        stage.setTitle("Hello!");
+        stage.setTitle("Image Transformer VHTH");
         stage.setScene(scene);
         stage.show();
     }

@@ -26,6 +26,7 @@ public class ImageController {
     private BufferedImage img;
     private File file;
 
+    // All of these filterPressed functions just disable themselves and enable other buttons
     @FXML
     void greyscalePressed(ActionEvent event) throws IOException {
         setImage(TransformImage.greyscaleFilter(ImageIO.read(file)));
@@ -111,7 +112,7 @@ public class ImageController {
         btnFlipV.setDisable(false);
     }
 
-    // Tyler McKenna's code, please do not touch! (excluding the line I specified)
+    // This takes in a file and sets the image, then disables the file button and enables the filter buttons
     @FXML
     private void fileButtonPressed(ActionEvent event){
         // Reads in file
@@ -140,11 +141,12 @@ public class ImageController {
         }
     }
 
+    // Just for readability
     private void setImage(BufferedImage img) {
         imageViewNew.setImage(convertToFxImage(img));
     }
 
-    // Copied method from stackoverflow
+    // Copied method from stackoverflow, converts BufferedImage to Image
     private static Image convertToFxImage(BufferedImage image) {
         WritableImage wr = null;
         if (image != null) {

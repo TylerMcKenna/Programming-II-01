@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -15,34 +17,80 @@
                <children>
                   <Pane layoutX="-4.0" layoutY="-1.0" prefHeight="590.0" prefWidth="270.0">
                      <children>
-                        <Button fx:id="btnMirror" disable="true" layoutX="39.0" layoutY="82.0" mnemonicParsing="false" onAction="#mirrorPressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Mirror" />
-                        <Button fx:id="btnInvert" disable="true" layoutX="129.0" layoutY="82.0" mnemonicParsing="false" onAction="#invertPressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Invert" />
-                        <Button fx:id="btnBrighten" disable="true" layoutX="39.0" layoutY="121.0" mnemonicParsing="false" onAction="#brightenPressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Brighten" />
-                        <Button fx:id="btnGreyscale" disable="true" layoutX="129.0" layoutY="44.0" mnemonicParsing="false" onAction="#greyscalePressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Greyscale" />
-                        <Button fx:id="btnSepia" disable="true" layoutX="39.0" layoutY="44.0" mnemonicParsing="false" onAction="#sepiaPressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Sepia" />
-                        <Button fx:id="btnFile" layoutX="83.0" layoutY="250.0" mnemonicParsing="false" onAction="#fileButtonPressed" style="-fx-background-color: f1f1f1;" text="Choose Image" />
+                        <Button fx:id="btnMirror" disable="true" layoutX="39.0" layoutY="82.0" mnemonicParsing="false" onAction="#mirrorPressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Mirror">
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <effect>
+                              <GaussianBlur radius="3.52" />
+                           </effect></Button>
+                        <Button fx:id="btnInvert" disable="true" layoutX="129.0" layoutY="82.0" mnemonicParsing="false" onAction="#invertPressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Invert">
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <effect>
+                              <GaussianBlur radius="3.52" />
+                           </effect></Button>
+                        <Button fx:id="btnBrighten" disable="true" layoutX="39.0" layoutY="121.0" mnemonicParsing="false" onAction="#brightenPressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Brighten">
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <effect>
+                              <GaussianBlur radius="3.52" />
+                           </effect></Button>
+                        <Button fx:id="btnGreyscale" disable="true" layoutX="129.0" layoutY="44.0" mnemonicParsing="false" onAction="#greyscalePressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Greyscale">
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <effect>
+                              <GaussianBlur radius="3.52" />
+                           </effect></Button>
+                        <Button fx:id="btnSepia" disable="true" layoutX="39.0" layoutY="44.0" mnemonicParsing="false" onAction="#sepiaPressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Sepia">
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <effect>
+                              <GaussianBlur radius="3.52" />
+                           </effect></Button>
+                        <Button fx:id="btnFile" layoutX="83.0" layoutY="250.0" mnemonicParsing="false" onAction="#fileButtonPressed" style="-fx-background-color: f1f1f1;" text="Choose Image">
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <effect>
+                              <GaussianBlur radius="3.52" />
+                           </effect></Button>
                         <Button fx:id="btnFlipH" disable="true" layoutX="39.0" layoutY="156.0" mnemonicParsing="false" onAction="#flipHPressed" prefHeight="48.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Flip Horizontally" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <effect>
+                              <GaussianBlur radius="3.52" />
+                           </effect>
                         </Button>
                         <Button fx:id="btnFlipV" disable="true" layoutX="129.0" layoutY="121.0" mnemonicParsing="false" onAction="#flipVPressed" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: f1f1f1;" text="Flip Vertically">
                            <font>
                               <Font size="10.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <effect>
+                              <GaussianBlur radius="3.52" />
+                           </effect>
                         </Button>
                      </children>
                   </Pane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" opacity="0.74" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #93e4c1;" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" opacity="0.74" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #93e4c1;">
+               <children>
+                  <ImageView fx:id="imageViewOriginal" fitHeight="248.0" fitWidth="538.0" layoutX="32.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)" AnchorPane.topAnchor="20.0" />
+                  <ImageView fx:id="imageViewNew" fitHeight="254.0" fitWidth="538.0" layoutX="32.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0);" AnchorPane.bottomAnchor="20.0" />
+               </children></AnchorPane>
         </items>
       </SplitPane>
-      <Pane layoutX="272.0" prefHeight="590.0" prefWidth="602.0">
-         <children>
-            <ImageView fx:id="imageViewOriginal" fitHeight="248.0" fitWidth="538.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)" />
-            <ImageView fx:id="imageViewNew" fitHeight="254.0" fitWidth="538.0" layoutX="23.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0);" />
-         </children>
-      </Pane>
    </children>
 </AnchorPane>

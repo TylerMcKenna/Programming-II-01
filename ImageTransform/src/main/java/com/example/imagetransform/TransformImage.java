@@ -4,8 +4,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class TransformImage {
-    // Tyler McKenna
-    // Math found here https://stackoverflow.com/questions/1061093/how-is-a-sepia-tone-created
+
+    // https://stackoverflow.com/questions/1061093/how-is-a-sepia-tone-created
+    /**
+     *
+     * @param img The image to be transformed
+     * @return Returns a BufferedImage with a sepia transformation
+     * @author Tyler
+     */
     public static BufferedImage sepiaFilter(BufferedImage img) {
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {
@@ -28,8 +34,13 @@ public class TransformImage {
         return img;
     }
 
-    // Tyler McKenna
     // https://support.ptc.com/help/mathcad/r9.0/en/index.html#page/PTC_Mathcad_Help/example_grayscale_and_color_in_images.html
+    /**
+     *
+     * @param img The image to be transformed
+     * @return Returns a BufferedImage with a greyscale transformation
+     * @author Tyler
+     */
     public static BufferedImage greyscaleFilter(BufferedImage img) {
         // Loops through all the pixels
         for (int y = 0; y < img.getHeight(); y++) {
@@ -54,8 +65,14 @@ public class TransformImage {
         return img;
     }
 
-    // Henri Junior
     // https://www.geeksforgeeks.org/negative-transformation-of-an-image-using-python-and-opencv/
+    /**
+     *
+     * @param img The image to be transformed
+     * @return Returns an inverted BufferedImage
+     * @author Henri-Junior
+     * @reso
+     */
     public static BufferedImage invert(BufferedImage img) {
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {
@@ -74,8 +91,13 @@ public class TransformImage {
         return img;
     }
 
-    // Vojin
     // https://www.tutorialspoint.com/how-to-create-a-mirror-image-using-java-opencv-library
+    /**
+     *
+     * @param img The image to be transformed
+     * @return Returns a BufferedImage with a mirroring transformation
+     * @author Vojin
+     */
     public static BufferedImage mirrorImageTu(BufferedImage img) {
 
         // Getting the height and width of the read image.
@@ -95,6 +117,12 @@ public class TransformImage {
         return mirroredImage;
     }
 
+    /**
+     *
+     * @param img The image to be transformed
+     * @return Returns a BufferedImage with increased brightness
+     * @author Holt
+     */
     public static BufferedImage brightnessFilter(BufferedImage img) {
 
         // make a new BufferedImage to edit
@@ -139,6 +167,12 @@ public class TransformImage {
         return brightImage;
     }
 
+    /**
+     *
+     * @param img The image to be transformed
+     * @return Returns a horizontally flipped image
+     * @author Holt
+     */
     public static BufferedImage flipHFilter(BufferedImage img) {
         // make a new BufferedImage to edit
         BufferedImage flippedHImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -193,6 +227,12 @@ public class TransformImage {
         return flippedHImage;
     }
 
+    /**
+     *
+     * @param img The image to be transformed
+     * @return Returns a vertically flipped image
+     * @author Holt
+     */
     public static BufferedImage flipVFilter(BufferedImage img) {
         // make a new BufferedImage to edit
         BufferedImage flippedVImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -216,7 +256,7 @@ public class TransformImage {
                 // get the RGBA of the current pixel
                 // and the pixel on the opposite side
                 // in a color to use the get color functions
-                int pixelTop = img.getRGB(x,y);
+                int pixelTop = img.getRGB(x, y);
                 Color oldColorLeft = new Color(pixelTop);
 
                 // make a value for the opposite side pixel
@@ -246,5 +286,4 @@ public class TransformImage {
         // return the new image
         return flippedVImage;
     }
-
 }

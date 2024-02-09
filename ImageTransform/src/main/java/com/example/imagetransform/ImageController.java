@@ -12,7 +12,6 @@ import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
-import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 
@@ -23,14 +22,12 @@ public class ImageController {
     @FXML
     private ImageView imageViewOriginal, imageViewNew;
 
-    private BufferedImage img;
     private File file;
 
     // All of these filterPressed functions just disable themselves and enable other buttons
     @FXML
     void greyscalePressed(ActionEvent event) throws IOException {
         setImage(TransformImage.greyscaleFilter(ImageIO.read(file)));
-        // this is meh
         btnGreyscale.setDisable(true);
         btnInvert.setDisable(false);
         btnMirror.setDisable(false);
@@ -123,9 +120,6 @@ public class ImageController {
             // Gets image from file, displays it on the original view
             Image image = new Image(file.toURI().toString());
             imageViewOriginal.setImage(image);
-
-            // Sets img for image filters to reference
-            img = ImageIO.read(file);
 
             // Enables the filters and stops user from changing image
             btnGreyscale.setDisable(false);
